@@ -4,6 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>수강신청하기</title>
+    <style>
+        #container{
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(166, 177, 209);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        ul,li{
+            list-style: none;
+        }
+        h1{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form fieldset{
+            margin-bottom: 20px;
+            border: 1px solid #cccccc;
+            padding:10px;
+            border-radius: 5px;
+        }
+        legend{
+           font-weight: bold;
+        }
+        label.reg{
+           font-weight: bold;
+        }
+        label input[type="radio"],
+        label input[type="checkbox"]{
+            margin-right: 5px;
+        }
+        button{
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 3px;
+            cursor: pointer;
+            border: 0;
+        }
+
+
+
+
+    </style>
 </head>
 <body>
     <div id="container">
@@ -17,7 +62,7 @@
                         <input type="text" id="userName" name="userName"maxlength = "50">
                     </li>
                     <li>
-                        <label for="class">학과</label>
+                        <label for="class" class="reg">학과</label>
                         <select name="major" id="major" onchange="displaySelect()">
                         <option>----학과 선택----</option>
                      <option value="archi">건축공학과</option>
@@ -44,13 +89,14 @@
                 <label><input type="checkbox" name="mailing2" id="dialog">5분회화</label>
                 <label><input type="checkbox" name="mailing3" id="pops">모닝팝스</label>
             </fieldset>
+             <button type="submit" onclick="showConfirmation()">제출</button>
+             <button type="reset" onclick="cancelForm()">취소</button>
         </form>
+        <div id="confirmation"></div>
     </div>
     <script>
-        var selectMenu = document.testForm.major;
-        function displaySelect(){
-            var selectText = selectMenu.options[selectMenu.selectedIndex].innerText;
-            alert(`${selectText }를 선택했습니다.`)
+        function showConfirmation(){
+
         }
     </script>
 </body>
