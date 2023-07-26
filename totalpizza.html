@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>합계</title>
+    <style>
+        #container{
+            width:400px;
+            margin: 0 auto;
+            background-color: antiquewhite;
+            padding: 20px;
+        }
+        fieldset{
+            margin-bottom: 20px;
+            border: 1px solid #c7c6c6;
+        }
+        #total{
+            border:none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<style>
+    *{
+        text-decoration: none;
+        list-style: none;
+    }
+</style>
+<body>
+    <div id="container">
+        <h1>피자 주문</h1>
+        <form>
+            <fieldset>
+                <legend>사이즈</legend>
+                <p>Large - 24000원</p>
+            </fieldset>
+            <fieldset>
+                 <legend>추가주문</legend>
+                 <label for="pickle">
+                    <input type="checkbox" id="pickle" class="checkbox" name="pickle" value="800">피클(800원)
+                 </label>
+                 <label for="chilly">
+                    <input type="checkbox" id="chilly" class="checkbox" name="chilly" value="300">칠리 소스(300원)
+                 </label>
+                 <label for="deeping">
+                    <input type="checkbox" id="deeping" class="checkbox" name="deeping" value="200">디핑 소스(200원)
+                 </label>
+                 <label for="stick">
+                    <input type="checkbox" id="stick" class="checkbox" name="stick" value="4800">치즈 스틱(4개,4800원)
+                 </label>
+                 <label for="salad">
+                    <input type="checkbox" id="salad" class="checkbox" name="salad" value="2400">콘 샐러드(2400원)
+                 </label>
+            </fieldset>
+            <fieldset>
+                <legend>합계</legend>
+                <input type="text" id="total" name="total" class="price" readonly>
+            </fieldset>
+        </form>
+        </div>
+        <script>
+            var price = 24000;
+            var sideMenu = document.querySelectorAll(".checkbox");
+            var total = document.querySelector("#total");
+            //price 변수 자체적으로 콤마 기능 추가
+            total.value = `${price.toLocaleString()}원`
+            for(i=0; i < sideMenu.length; i++){
+                sideMenu[i].onclick = function(){
+                  if(this.checked == true ){
+                     price += parseInt(this.value)
+
+                 }else{
+                    price -= parseInt(this.value);
+                 }
+                 total.value = `${price.toLocaleString()}원`
+                }
+                
+            }
+        </script>
+   
+</body>
+</html>
